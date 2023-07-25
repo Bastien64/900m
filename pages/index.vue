@@ -1,7 +1,7 @@
 <template>
   <div class="bodyPage">
     <div class="typeAction">
-      <p style="color: white; font-weight: bold;">Type d'action :</p>
+      <p  class="Ok" style="color: white; font-weight: bold;">Type d'action :</p>
       <div class="typeActionBouton" @click="filterByType('Apprendre')">Apprendre</div>
       <div class="typeActionBouton" @click="filterByType('Participer')">Participer</div>
       <div class="typeActionBouton" @click="filterByType('Entreprendre')">Entreprendre</div>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="row">
-      <div v-for="post in filteredPosts" :key="post.id" class="col-md-6 col-sm-6 mb-5">
+      <div v-for="post in filteredPosts" :key="post.id" class=" col-md-4 col-sm-20 mb-5">
         <div class="card">
           <div class="card-body" style="background-color: #DDECCB ;">
             <h3 class="card-title" style="font-weight: bold;">{{ post.title }}</h3>
@@ -30,7 +30,7 @@
                 <p style=" font-weight: bold; margin-top: 5%;">{{ post.type }}</p>
               </div>
             </div>
-            <p class="card-text">{{ post.description }}</p>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla harum dolorum inventore eos cupiditate atque impedit eligendi ratione veniam, esse aliquam nesciunt totam? Quidem quis saepe velit excepturi dolore ad.</p>
             <a href="#" class="btn btn-success action" @click="togglePostStatus(post)">
               {{ post.isDone ? 'Fait' : 'A faire' }}
             </a>
@@ -110,10 +110,12 @@ export default {
 
   .bodyPage {
   width: 100vw;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-size: 2vh;
 }
 
 .typeAction {
@@ -185,6 +187,9 @@ export default {
   border-radius: 10px;
   margin-left: 5%;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.13);
+}
+.row {
+  max-width: 90vw;
 }
 }
 
