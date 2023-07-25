@@ -1,12 +1,9 @@
 <template>
-  <TheNavbar />
-  <TheTopimage />
+
   <div class="NuxtPage">
     <NuxtPage />
   </div>
-  <div class="TheFooter">  
-    <TheFooter />
-  </div>
+
 </template>
   <script setup lang="ts">
 useHead({
