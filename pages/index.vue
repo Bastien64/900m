@@ -11,8 +11,8 @@
         <p class="Ok" style="color: white; font-weight: bold;">Durée :</p>
         <div class="typeActionBouton" :class="{ 'selected': selectedTemps === '5' }" @click="filterByTemps('5')">5 minutes</div>
         <div class="typeActionBouton" :class="{ 'selected': selectedTemps === '20' }" @click="filterByTemps('20')">20 minutes</div>
-        <div class="typeActionBouton" :class="{ 'selected': selectedTemps === '45' }" @click="filterByTemps('45')">45 minutes</div>
-        <div class="typeActionBouton" :class="{ 'selected': selectedTemps === '+' }" @click="filterByTemps('+')">+</div>
+        <div class="typeActionBouton" :class="{ 'selected': selectedTemps === '45' }" @click="filterByTemps('45')">45 minutes et +</div>
+
       </div>
     </div>
 
