@@ -22,11 +22,11 @@
 
       <p>Actions effectuées :</p>
       <div class="resteAFaireBouton" @click="showAllAction">{{ countActionsFaites }}</div>
-      <p>Mis de côté: </p>
+      <!-- <p>Mis de côté: </p>
       <div class="resteAFaireBouton" @click="toggleMisDeCote">{{ misDeCote.length }}</div>
       <div v-if="showMisDeCote" class="misDeCoteContent">
         <div v-for="post in misDeCote" :key="post.id"></div>
-      </div>
+      </div> -->
     </div>
 
     <div class="row">
@@ -53,9 +53,9 @@
               <a href="#" class="btn btn-success action" @click="togglePostStatus(post)">
                 {{ post.isDone ? 'Fait' : 'A faire' }}
               </a>
-              <a href="#" class="btn btn-warning" @click="moveToLater(post)" style="margin-left: 10px !important;">
+                <!--  <a href="#" class="btn btn-warning" @click="moveToLater(post)" style="margin-left: 10px !important;">
                 Plus tard
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
