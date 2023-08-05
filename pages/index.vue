@@ -83,12 +83,12 @@ export default {
   },
   methods: {
     resetPostStatus(post) {
-      post.isDone = false;
       const index = this.misDeCote.indexOf(post);
       if (index !== -1) {
         this.misDeCote.splice(index, 1);
         this.posts.push(post); // Ajouter l'action réinitialisée à this.posts
       }
+      Cookies.set('misDeCote', JSON.stringify(this.misDeCote));
     },
     filterByType(type) {
       if (this.selectedType === type) {
@@ -165,32 +165,41 @@ export default {
     },
   },
   async created() {
-    try {
-      this.loading = true;
-      const response = await axios.get('https://my-json-server.typicode.com/bastien64/m/posts');
-      this.loading = false;
+  try {
+    this.loading = true;
+    const response = await axios.get('https://my-json-server.typicode.com/bastien64/m/posts');
+    this.loading = false;
 
-      // Map response data and set the `isDone` property based on the cookies
-      this.posts = response.data.map((post) => {
-        const cookieValue = Cookies.get(`post_${post.id}`);
-        if (cookieValue === 'Fait') {
-          post.isDone = true;
-        } else {
-          post.isDone = false;
-        }
-        return post;
-      });
+    // Map response data and set the `isDone` property based on the cookies
+    this.posts = response.data.map((post) => {
+      const cookieValue = Cookies.get(`post_${post.id}`);
+      if (cookieValue === 'Fait') {
+        post.isDone = true;
+      } else {
+        post.isDone = false;
+      }
+      return post;
+    });
 
-      // Update counters once data is loaded
-      this.updateCounters();
-    } catch (error) {
-      this.loading = false;
-      this.error = `Une erreur s'est produite : ${error.message}`;
+    // Update counters once data is loaded
+    this.updateCounters();
+
+    // Display misDeCote array in the console
+    console.log('misDeCote:', this.misDeCote);
+
+    // Load misDeCote from cookies
+    const misDeCoteCookie = Cookies.get('misDeCote');
+    if (misDeCoteCookie) {
+      this.misDeCote = JSON.parse(misDeCoteCookie);
     }
+  } catch (error) {
+    this.loading = false;
+    this.error = `Une erreur s'est produite : ${error.message}`;
+  }
 
-    const params = new URLSearchParams(window.location.search);
-    this.id = params.get('id');
-  },
+  const params = new URLSearchParams(window.location.search);
+  this.id = params.get('id');
+},
 };
 </script>
 
