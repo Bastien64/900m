@@ -50,9 +50,9 @@
               <button class="btn btn-primary" @click="resetPostStatus(post)">Réinitialiser</button>
             </div>
             <div v-else>
-              <a href="#" class="btn btn-success action" @click="togglePostStatus(post)">
-                {{ post.isDone ? 'Fait' : 'A faire' }}
-              </a>
+              <a href="#" :class="['btn', post.isDone ? 'fait' : 'a-faire', 'action']" @click="togglePostStatus(post)">
+          {{ post.isDone ? 'Fait' : 'A faire' }}
+        </a>
                 <!--  <a href="#" class="btn btn-warning" @click="moveToLater(post)" style="margin-left: 10px !important;">
                 Plus tard
               </a> -->
@@ -307,7 +307,16 @@ export default {
   .row {
     max-width: 90vw;
   }
+  .btn.fait {
+    background-color: rgba(0, 128, 0, 0.50);
+    color: white;
+  }
 
+  /* Styles pour le bouton "A faire" */
+  .btn.a-faire {
+    background-color:rgb(49, 104, 54);
+    color: white;
+  }
 
 }
 
@@ -392,6 +401,16 @@ export default {
     font-weight: bold;
     border-radius: 10px;
     margin-left: 5%;
+  }
+  .btn.fait {
+    background-color: rgba(0, 128, 0, 0.50);
+    color: white;
+  }
+
+  /* Styles pour le bouton "A faire" */
+  .btn.a-faire {
+    background-color: rgb(49, 104, 54);
+    color: white;
   }
 }
 </style>
