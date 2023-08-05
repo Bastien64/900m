@@ -18,11 +18,10 @@
 
     <div class="resteAFaire">
       <p>Nouvelles actions :</p>
-      <div class="resteAFaireBouton">{{ countActionsAFaire }}</div>
+      <div class="resteAFaireBouton" @click="showAllAction">{{ countActionsAFaire }}</div>
 
       <p>Actions effectuées :</p>
-      <div class="resteAFaireBouton">{{ countActionsFaites }}</div>
-
+      <div class="resteAFaireBouton" @click="showAllAction">{{ countActionsFaites }}</div>
       <p>Mis de côté: </p>
       <div class="resteAFaireBouton" @click="toggleMisDeCote">{{ misDeCote.length }}</div>
       <div v-if="showMisDeCote" class="misDeCoteContent">
@@ -54,7 +53,7 @@
               <a href="#" class="btn btn-success action" @click="togglePostStatus(post)">
                 {{ post.isDone ? 'Fait' : 'A faire' }}
               </a>
-              <a href="#" class="btn btn-warning" @click="moveToLater(post)">
+              <a href="#" class="btn btn-warning" @click="moveToLater(post)" style="margin-left: 10px !important;">
                 Plus tard
               </a>
             </div>
@@ -314,7 +313,7 @@ export default {
 
   .typeAction {
     width: 50vw;
-    height: 50vh;
+    height: 60vh;
     margin-top: 10px;
     background-color: rgb(49, 104, 54);
     display: flex;
@@ -344,7 +343,12 @@ export default {
     color: white;
   }
 
-
+  .selected {
+    background-color: #4caf50;
+    /* Nouvelle couleur de fond */
+    color: white;
+    /* Nouvelle couleur du texte */
+  }
   .resteAFaire {
     margin-top: 2%;
     width: 70vw;
